@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { getWeb3, getInstance}  from "./Web3Util";
 import AppNav from './AppNav';
-import './App.css';
-
-/**
- * @App NFT Art Market using ERC-721
- * @author Yogesh K
- */
-
+import './Wallet.css';
 export class Wallet extends Component {
   constructor(props) {
         super(props);
@@ -175,13 +169,9 @@ export class Wallet extends Component {
             return (
                 <div className="App">
                   <AppNav></AppNav>
-                                  <section className="text-center">
-                    <div className="row mb-3 mt-3">
-                            <div className="col-md-2 mb-md-0 mb-1"></div>
-                            <div className="col-md-8 mb-md-0 mb-1">
-                                <div className="card">
-                                    <div className="card-body ">
-                                    <div className="row">
+                    <section className="w-center">
+                                <div className="card-body ">
+                                    <div className="w-row">
                                         <div className="col-md-6 mb-md-0">
                                             <span className="font-weight-bold blue-grey-text">My Address:</span> {this.state.user}
                                         </div>
@@ -189,7 +179,7 @@ export class Wallet extends Component {
                                             <span className="font-weight-bold blue-grey-text">NetworkId:</span> {this.state.networkId}
                                         </div>
                                     </div>
-                                    <div className="row">
+                                    <div className="w-row">
                                         <div className="col-md-6 mb-md-0">
                                             <span className="font-weight-bold blue-grey-text">Balance:</span> {this.state.balance} (ether)
                                         </div>
@@ -197,12 +187,10 @@ export class Wallet extends Component {
                                             <span className="font-weight-bold blue-grey-text">NetworkType:</span> {this.state.networkType}
                                         </div>
                                     </div>
-                                    </div>
                                 </div>
-                            </div>
+                             
 
-                            <div className="col-md-2 mb-md-0 mb-1"></div>
-                        </div>
+                            
                     <h5 className="h5-responsive font-weight-bold text-center my-3">My Finxter Arts</h5>
                     <div className="container">
                     {this.state.rows.map((row, i) =>
@@ -210,20 +198,37 @@ export class Wallet extends Component {
                         {this.state.columns.map((col, j) =>
                             <div className="col-lg-4 col-md-12 mb-lg-0 mb-0" key={j}>
                                 { i*3+j < this.state.total &&
-                                    <div>
+                                    <div className='content'>
                                     <div className="view overlay rounded z-depth-3 mb-2">
-                                    <img className="img-fluid" src={this.state.image[i*3+j]} alt="Sample"/>
+                                    <img className="img" src={this.state.image[i*3+j]} alt="Sample"/>
                                     </div>
-                                    <h6 className="pink-text font-weight-bold mb-1"><i className="fas fa-map pr-2"></i></h6>
-                                    <div className="font-weight-bold orange-text deep-orange-lighter-hover">TokenId: {this.state.tokenIds[i*3+j]}</div>
-                                    <h5 className="font-weight-bold mb-1">Title: {this.state.title[i*3+j]}</h5>
-                                    <div className="dark-grey-text">{this.state.price[i*3+j]} (ether)</div>
-                                    <p>by <span className="font-weight-bold">{this.state.author[i*3+j]}</span>, {this.state.publishDate[i*3+j]}</p>
-                                    
-                                    <p className="alert alert-primary dark-grey-text">{this.state.desc[i*3+j]}</p>
-                                    { this.state.status[i*3+j]==='Publish' &&
-                                        <button className="btn btn-pink btn-rounded btn-md" data-toggle="modal" onClick={e => (e.preventDefault(),this.sellArt(this.state.tokenIds[i*3+j]))} data-target=".sell-modal" >{this.state.status[i*3+j]}</button>
-                                    }
+                                    <div>
+                                        <div>
+                                            <h6 className="pink-text font-weight-bold mb-1"><i className="fas fa-map pr-2"></i></h6>
+                                        </div>
+                                        
+                                        <div className='row1'>
+                                            <div className="font-weight-bold orange-text deep-orange-lighter-hover">TokenId: {this.state.tokenIds[i*3+j]}</div>
+                                            <div>
+                                                <h5 className="font-weight-bold mb-1">Title: {this.state.title[i*3+j]}</h5>
+                                            </div>
+                                            
+                                            <div className="dark-grey-text">    {this.state.price[i*3+j]} (ether)
+
+                                            </div>
+                                        </div>
+                                        <div className='row2'>
+                                            <div>
+                                                <p>by <span className="font-weight-bold">{this.state.author[i*3+j]}</span>, {this.state.publishDate[i*3+j]}</p>
+                                            </div>
+                                            <div>
+                                                <p className="alert alert-primary dark-grey-text">{this.state.desc[i*3+j]}</p>
+                                            </div>
+                                        </div>
+                                        { this.state.status[i*3+j]==='Publish' &&
+                                            <button className="w-btn" data-toggle="modal" onClick={e => (e.preventDefault(),this.sellArt(this.state.tokenIds[i*3+j]))} data-target=".sell-modal" >{this.state.status[i*3+j]}</button>
+                                        }
+                                    </div>
                                 </div>
                                 }
                             </div>
@@ -232,26 +237,30 @@ export class Wallet extends Component {
                     )}
                     </div>
                     <div className={`modal fade sell-modal ${this.state.showModal ? 'show' : ''}`} id="submitModal" tabIndex="-1" role="dialog" aria-labelledby="submitModalLabel"  aria-hidden="true">
-                        <div className="modal-dialog" role="document">
-                            <div className="modal-content">
-                            <div className="modal-header">
-                                <h5 className="modal-title" id="myLabel">Sell Art</h5>
-                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div className="modal-body">
-                                <input className="form-control mb-4" id="sellPrice" name="sellPrice"  type="text" placeholder="Price (ether)"  onChange={this.changeHandler}  value={this.state.sellPrice}/>
-                            </div>
-                            <div className="modal-footer">
-                                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" className="btn btn-primary" data-dismiss="modal" onClick={e => (e.preventDefault(),this.submitArtSell())}>Submit</button>
-                            </div>
+                        <div className="w-container" role="document">
+                            <div className="w-content">
+                                <div className="w-header">
+                                    <div className='sell-art'>
+                                        <h5 className="modal-title" id="myLabel">Sell Art</h5>
+                                    </div>
+                                    <div>
+                                        <button type="w-btn" className="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div className="w-body">
+                                    <input className="form-control mb-4" id="sellPrice" name="sellPrice"  type="text" placeholder="Price (ether)"  onChange={this.changeHandler}  value={this.state.sellPrice}/>
+                                </div>
+                                <div className="w-footer">
+                                    <button type="button" className="w-btn1" data-dismiss="modal">Close</button>
+                                    <button type="button" className="w-btn1" data-dismiss="modal" onClick={e => (e.preventDefault(),this.submitArtSell())}>Submit</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </section>
-              </div>
+            </div>
 
             );
     }
@@ -266,7 +275,7 @@ export class Wallet extends Component {
                             <div className="col-md-8 mb-md-0 mb-1">
                                 <div className="card">
                                     <div className="card-body ">
-                                    <div className="row">
+                                    <div className="w-row">
                                         <div className="col-md-6 mb-md-0">
                                             <span className="font-weight-bold blue-grey-text">My Address:</span> {this.state.user}
                                         </div>
@@ -274,7 +283,7 @@ export class Wallet extends Component {
                                             <span className="font-weight-bold blue-grey-text">NetworkId:</span> {this.state.networkId}
                                         </div>
                                     </div>
-                                    <div className="row">
+                                    <div className="w-row">
                                         <div className="col-md-6 mb-md-0">
                                             <span className="font-weight-bold blue-grey-text">Balance:</span> {this.state.balance} (ether)
                                         </div>

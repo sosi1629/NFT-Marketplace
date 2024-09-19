@@ -1,0 +1,64 @@
+.sec{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+
+}
+
+.f-container{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  align-items: center;
+  background-color: rgb(207, 207, 247);
+  text-align: center;
+  justify-items: center;
+  padding-right: -100px;
+  border: 1px solid gold;
+  border-radius: 10px;
+
+}
+.f-title{
+  text-align: center;
+  font-size: 32px;
+  font-style: oblique;
+  font-weight: bold;
+  font-family: cursive;
+}
+.p-row{
+  text-align: center;
+}
+.p-input{
+  display: block;
+  width: 400px;
+  height: 50px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.f-options{
+  display: flex;
+  align-items: center;
+}
+.optionImg{
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+.options{
+  width: 400px;
+  height: 50px;
+  border-radius: 5px;
+
+}
+.publish-btn{
+  width: 300px;
+  height: 50px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border: 1px solid black;
+  text-align: center;
+  margin-bottom: 10px;
+}

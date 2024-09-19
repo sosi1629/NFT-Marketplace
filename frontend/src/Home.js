@@ -1,13 +1,7 @@
 import React, { Component } from 'react';
 import { getWeb3, getInstance}  from "./Web3Util";
 import AppNav from './AppNav';
-import './App.css';
-
-
-/**
- * @App NFT Art Market using ERC-721
- * @author Yogesh K
-**/
+import './Home.css';
 
 export class Home extends Component {
 
@@ -138,34 +132,57 @@ export class Home extends Component {
     }
 
 
-  render() {
-       if (this.state.hasData){
-            return(
-                    <div className="App">
+render() {
+    if (this.state.hasData){
+        return(
+            
+            <div className="App">
+
                       <AppNav/>
 
-                <section className="text-center">
+                <section className="h-sec">
                     <h5 className="h1-responsive font-weight-bold text-center my-5">Buy/Sell NFT Art on our Art Gallery</h5>
                     <div className="container">
                     {this.state.rows.map((row, i) =>
-                        <div className="row" key={i}>
+                        <div className="h-row" key={i}>
                         {this.state.columns.map((col, j) =>
                             <div className="col-lg-4 col-md-12 mb-lg-0 mb-0" key={j}>
-                                { i*3+j < this.state.total &&                                    
-                                    <div>
-                                    <div className="view overlay rounded z-depth-3 mb-2">
-                                    <img className="img-fluid" src={this.state.image[i*3+j]} alt="Sample"/>
+                                { i*3+j < this.state.total &&          
+                                    <div className='content'>
+                                        <div className="view overlay rounded z-depth-3 mb-2">
+                                        <img className="img" src={this.state.image[i*3+j]} alt="Sample"/>
+                                        
+                                        </div>
+                                        <div>
+                                            <div>
+                                                <h6 className="pink-text font-weight-bold mb-1"><i className="fas fa-map pr-2"></i>
+                                                </h6>
+                                            </div>
+                                            <div className='row1'>
+                                                
+                                                <div className="font-weight-bold orange-text deep-orange-lighter-hover">
+                                                    TokenId: {this.state.tokenIds[i*3+j]}
+                                                </div>
+                                                <div>
+                                                    <h5 className="font-weight-bold mb-1">Title: {this.state.title[i*3+j]}
+                                                    </h5>
+                                                </div>
+                                                <div className="dark-grey-text">{this.state.price[i*3+j]} (ether)
+                                                </div>
+                                            </div>
+                                            <div className='row2'>
+                                                <div>
+                                                    <p>by <span className="font-weight-bold">{this.state.author[i*3+j]}</span>, {this.state.publishDate[i*3+j]}</p>
+                                                </div>
+                                            
+                                                <div>
+                                                    <p className="alert alert-primary dark-grey-text">{this.state.desc[i*3+j]}</p>
+                                                </div>
+                                            </div>
+                                            <button className="buybtn" onClick={e => (e.preventDefault(),this.buyArt(this.state.tokenIds[i*3+j], this.state.price[i*3+j]))}>Buy</button>
+                                        </div>
                                     
                                     </div>
-                                    <h6 className="pink-text font-weight-bold mb-1"><i className="fas fa-map pr-2"></i></h6>
-                                    <div className="font-weight-bold orange-text deep-orange-lighter-hover">TokenId: {this.state.tokenIds[i*3+j]}</div>
-                                    <h5 className="font-weight-bold mb-1">Title: {this.state.title[i*3+j]}</h5>
-                                    <div className="dark-grey-text">{this.state.price[i*3+j]} (ether)</div>
-                                    <p>by <span className="font-weight-bold">{this.state.author[i*3+j]}</span>, {this.state.publishDate[i*3+j]}</p>
-                                    
-                                    <p className="alert alert-primary dark-grey-text">{this.state.desc[i*3+j]}</p>
-                                    <button className="btn btn-pink btn-rounded btn-md" onClick={e => (e.preventDefault(),this.buyArt(this.state.tokenIds[i*3+j], this.state.price[i*3+j]))}>Buy</button>
-                                </div>
                                 }
                             </div>
 
@@ -173,8 +190,8 @@ export class Home extends Component {
                         </div>
                     )}
                     </div>
-                    </section>
-                </div>
+                </section>
+            </div>
 
             ) ;
        }
@@ -183,12 +200,10 @@ export class Home extends Component {
            return(
                 <div className="App">
                     <AppNav/>
-                    <section className="text-center">
-                        <h5 className="h1-responsive font-weight-bold text-center my-5">Buy Art on our Finxter Art Gallery</h5>
-                        <div className="container">
+                    <section className="text-center1" >
+                        <h5 className="h1-responsive font-weight-bold text-center my-5">Buy cloth on our cloth Gallery</h5>
                         <div className="alert alert-primary" role="alert">
-                            Publish your Finxter arts on Blockchain 
-                        </div>
+                            Publish your cloth arts on Blockchain 
                         </div>
                     </section>
                 </div>

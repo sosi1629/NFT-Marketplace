@@ -1,13 +1,6 @@
 import React, { Component } from 'react'
-import "./App.css";
+import "./AppNav.css";
 import { getWeb3, getInstance}  from "./Web3Util";
-import { withRouter} from 'react-router-dom';
-
-
-/**
- * @App NFT Art Market using ERC-721
- * @author Yogesh K
-**/
 
 export class AppNav extends Component {
 
@@ -37,12 +30,12 @@ export class AppNav extends Component {
     <nav className="navbar navbar-expand-lg navbar-dark stylish-color">
                 <div className="navbar-brand">  
                     <a className="navbar-item text-white" href="/"> 
-                        <strong><i className="fa fa-coins"></i>NFT Art Market ( {this.state.name} | {this.state.symbol})</strong>  
+                        <strong><i className="fa fa-coins"></i>NFT Cloth Market  &#128087; </strong>  
                     </a>  
                 </div> 
                 <form className="form-inline  my-2 my-lg-0 ml-auto">
-                    <a className="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="/">Finxter Gallery / </a>
-                    <a className="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="/publishArt"> Publish Your Art / </a>
+                    <a className="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="/">Cloth Gallery  </a>
+                    <a className="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="/publishArt"> Add Your Cloth </a>
                     <a className="btn btn-outline-white btn-md my-2 my-sm-0 ml-3" href="/mywallet"> Wallet Info </a>
                 </form>
             </nav>

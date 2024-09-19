@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { getWeb3, getInstance}  from "./Web3Util";
 import AppNav from './AppNav';
-import './App.css';
+import './Publish.css';
 
-/**
- * @App NFT Art Market using ERC-721
- * @author Yogesh K
- */
 
 export class Publish extends Component {
-      constructor(props) {
+        constructor(props) {
         super(props);
         this.state = { 
-            imageValue: 'images/whale.png',
+            imageValue: 'images/images2.png',
             description: '',
             title: '', 
             authorName: '',
@@ -86,48 +82,50 @@ export class Publish extends Component {
         <div>
             <AppNav></AppNav>
 
-            <section className="mx-auto" style={{ marginTop: '20px'}}>
-                <div className="row">
-                    <div className="col-md-2 mb-md-0 mb-5"></div>
-                    <div className="col-md-8 mb-md-0 mb-5">
-                        <div className="card">
-                            <div className="card-body">
-                                <form className="text-center border border-light p-5" onSubmit={this.submitHandler}>
-                                    <p className="h4 mb-4">Submit your NFT art today.</p>
-                                    <div className="row">
-                                        <div className="col-md-6 mb-md-0 mb-5">
-                                            <input className="form-control mb-4" id="title" name="title" type="text" placeholder="Title" onChange={this.changeHandler}  value={this.state.title}/>
-                                            <input className="form-control mb-4" id="description" name="description"  type="text" placeholder="Description" onChange={this.changeHandler}  value={this.state.description}/>
-                                           <input className="form-control mb-4" id="authorName" name="authorName" type="text" placeholder="Author Name" onChange={this.changeHandler}  value={this.state.authorName}/>
+            <section className="sec">
+            
+                <form className="f-container" onSubmit={this.submitHandler}>
+                    <p className="f-title">Submit your NFT today.</p>
+                    <div className="p-row">
+                        
+                        <input className='p-input'  id="title" name="title" type="text" placeholder="Title" onChange={this.changeHandler}  value={this.state.title}/>
+                        <input className='p-input'  id="description" name="description"  type="text" placeholder="Description" onChange={this.changeHandler}  value={this.state.description}/>
+                        <input className='p-input'  id="authorName" name="authorName" type="text" placeholder="Author Name" onChange={this.changeHandler}  value={this.state.authorName}/>
 
-                                        </div>
-                                        <div className="col-md-6 mb-md-0 mb-5">
-                                           <input className="form-control mb-4" id="price" name="price"  type="text" placeholder="Price (ether)"  onChange={this.changeHandler}  value={this.state.price}/>
-                                           <input className="form-control mb-4" id="date" name="date"  type="text" placeholder="Date" onChange={this.changeHandler}   value={this.state.date}/>
-                                            <select className="browser-default custom-select" onChange={this.imageChange} value={this.state.imageValue}>
-                                                    <option value="images/bear.png">images/bear.png</option>
-                                                    <option value="images/cat.png">images/cat.png</option>
-                                                    <option value="images/dog.png">images/dog.png</option>
-                                                    <option value="images/horse.png">images/horse.png</option>
-                                                    <option value="images/monkey.png">images/monkey.png</option>
-                                                    <option value="images/pug.png">images/pug.png</option>
-                                                    <option value="images/whale.png">images/whale.png</option>
-                                            </select>
-                                            <img className="imgBox z-depth-4 rounded" alt="art" src={this.state.imageValue} />
-                                        </div>
-                                    </div>
-                                    <div className="row">
-                                        <div className="col-md-5 mb-md-0 mb-5"></div>
-                                        <div className="col-md-2 mb-md-0 mb-5"><button className="btn btn-info btn-block" type="submit">Publish</button></div>
-                                        <div className="col-md-5 mb-md-0 mb-5"></div>
-                                    </div>
+                        <input className='p-input'  id="price" name="price"  type="text" placeholder="Price (ether)"  onChange={this.changeHandler}  value={this.state.price}/>
+                        <input className='p-input'  id="date" name="date"  type="date" placeholder="Date" onChange={this.changeHandler}   value={this.state.date}/>
+                        <div className="f-options">
+                            <div className="">
+                                <select className='options' onChange={this.imageChange} value={this.state.imageValue}>
                                     
-                                </form>
+                                    <option value="./images/images1.png">Darkgreen-caport</option>
+                                    <option value="./images/images2.png">white-collared-shirt</option>
+                                    <option value="./images/images3.png">Brown-Boho-overalls</option>
+                                    <option value="./images/images4.png">Red-Zipup-Hoodie</option>
+                                    <option value="./images/images5.png">Red-sleevless-shirt</option>
+                                    <option value="./images/images6.png">Red-Tshirt</option>
+                                    <option value="./images/images7.png">Dirty-Green-Short</option>
+                                    <option value="./images/images8.png">Mother-Abdomen-Shirt</option>
+                                    <option value="./images/images9.png">Striped-Shirt</option>
+                                    <option value="./images/images10.png">Purple-Patterned-Kneelength-Dress</option>
+                                    <option value="./images/images11.png">Red-pokedot-Dress</option>
+                                    <option value="./images/images12.png">Puffer-Jacket</option>
+                                    <option value="./images/images13.png">Shirocolor-Trouser</option>
+                                    <option value="./images/images14.png">Pink-terry-cloth</option>
+
+                                </select>
+                            </div>
+                            <div className="">
+                                <img className="optionImg" alt="art" src={this.state.imageValue} />
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-2 mb-md-0 mb-5"></div>
-                </div>
+                    <div className="p-row">    
+                        <button className='publish-btn' type="submit">Publish</button>
+                    </div>
+                    
+                </form>
+    
 
             </section>
 
